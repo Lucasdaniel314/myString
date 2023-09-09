@@ -1,26 +1,36 @@
 #include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
 
 typedef struct string {
-    char value[];
+    char *value;
 } string;
 
-char[] stringToArray(string x) {
-    return string.value;
+void createString(string *x) {
+    x->value = malloc(255 * sizeof(char));
+}
+
+char* stringToArray(string x) {
+    if (x.value == NULL) {
+        exit(1);
+    }
+    return x.value;
 }
 
 void setCharAt(int i, string x, char newChar) {
-    string.value[i] = newChar;
+    x.value[i] = newChar;
 }
 
-int stringToInteger(string x) {
-    char numbers[] = "0123456789";
-    for (int i = 0 ; i < strlen(x.value) ; i++) {
-        for (int j = 0 ; j < 10 ; i++) {
-            if (string.value[i] == numbers[j]) {
-                return -1;
-            }
-        }
+string inputString(char message[], int len) {
+    string strForReturning;
+    createString(&strForReturning);
+    if (len > 255) {
+        strForReturning.value = realloc(strForReturning.value, len * sizeof(char));
     }
-
-    return atoi(x.value);
+    char value[len];
+    printf("%s", message);
+    fgets(value, len, stdin);
+    value[strlen(value) - 1] = '\0';
+    strcpy(strForReturning.value, value);
+    return strForReturning;
 }

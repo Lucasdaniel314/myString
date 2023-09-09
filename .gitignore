@@ -35,6 +35,10 @@
 *.i*86
 *.x86_64
 *.hex
+test
+
+#object file
+*.o
 
 # Debug files
 *.dSYM/
@@ -47,6 +51,9 @@
 *.cmd
 .tmp_versions/
 modules.order
+
+#test files
+test.c
 Module.symvers
 Mkfile.old
 dkms.conf
