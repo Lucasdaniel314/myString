@@ -34,3 +34,13 @@ string inputString(char message[], int len) {
     strcpy(strForReturning.value, value);
     return strForReturning;
 }
+
+//print array of characters
+void printa(char *message) {
+    printf("%s\n", message);
+}
+
+//print string
+void prints(string message) {
+    printf("%s\n", message.value);
+}
