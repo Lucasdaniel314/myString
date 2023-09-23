@@ -11,7 +11,7 @@ typedef enum {
 
 typedef struct string {
     char *value;
-    int len;
+    size_t len;
     stringType type;
 } string;
 
@@ -39,11 +39,11 @@ string createString(stringType type, char initValue[]) {
             exit(1);
     }
     if (initValue != NULL) {
-        if (arrayCharSize(initValue) > valueOf(type)) {
+        if ((sizeof(initValue) / sizeof(initValue[0])) > valueOf(type)) {
             exit(1);
         }
         strcpy(x.value, initValue);
-        x.len = arrayCharSize(initValue);
+        x.len = sizeof(initValue) / sizeof(initValue[0]);
     } else {
         x.len = 0;
     }
@@ -54,16 +54,15 @@ void setCharAt(int i, string x, char newChar) {
     x.value[i] = newChar;
 }
 
+// error here, the len of x is not changing
 string inputString(char message[], stringType type) {
     string x = createString(type, NULL);
     char value[valueOf(type)];
     printf("%s", message);
     fgets(value, valueOf(type), stdin);
     value[strlen(value) - 1] = '\0';
-    if (arrayCharSize(value) > valueOf(type)) {
-        exit(1);
-    }
-    x.len = arrayCharSize(value);
+    x.len = sizeof(value) / sizeof(value[0]);
+    printf("%zu", x.len);
     strcpy(x.value, value);
     return x;
 }
@@ -94,14 +93,4 @@ void printa(char message[]) {
 //print string
 void prints(string message) {
     printf("%s\n", message.value);
-}
-
-int size_tToInt(size_t x) {
-    return (int) x;
-}
-
-//error in this function
-/* when i input "yes", and i call this function to get the "yes" size, the returning value is 8, why 8? */
-int arrayCharSize(char a[]) {
-    return sizeof(a) / sizeof(a[0]);
 }
