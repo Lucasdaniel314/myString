@@ -36,9 +36,7 @@
 *.x86_64
 *.hex
 test
-
-#object file
-*.o
+main
 
 # Debug files
 *.dSYM/
@@ -54,6 +52,14 @@ modules.order
 
 #test files
 test.c
+main.c
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# IDE files
+bin/
+obj/
+.vscode/
+*.layout
+*.depend

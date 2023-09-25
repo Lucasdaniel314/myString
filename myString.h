@@ -10,7 +10,7 @@ typedef enum {
 
 typedef struct string {
     char *value;
-    size_t len;
+    int len;
     stringType type;
 } string;
 

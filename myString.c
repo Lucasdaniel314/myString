@@ -42,14 +42,24 @@ void setCharAt(int i, string x, char newChar) {
     x.value[i] = newChar;
 }
 
-// error here, the len of value is not changing
 string inputString(char message[], stringType type) {
+    int len = valueOf(type);
     string x = createString(type, NULL);
-    char value[valueOf(type)];
+
+    char input[len];
     printf("%s", message);
-    fgets(value, valueOf(type), stdin);
-    value[strlen(value) - 1] = '\0';
-    x.len = sizeof(value) / sizeof(value[0]);
+
+    setbuf(stdin, 0);
+    fgets(input, len, stdin);
+
+    char value[strlen(input) - 1];
+
+    input[strlen(value) - 1] = '\0';
+    for (int i = 0 ; i < strlen(value) - 1 ; i++) {
+        value[i] = input[i];
+    }
+    int len2 = sizeof(value) / sizeof(char);
+    x.len = len2;
     strcpy(x.value, value);
     return x;
 }
