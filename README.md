@@ -31,24 +31,24 @@ In the <a href="https://github.com/Lucasdaniel314/myString/blob/main/myString.h"
   </tr>
 </table>
 C will never allow us to 
-```python
+<code>
 string str = "hi mom!";
 str = "hi mom again!";
 print(str);
-```<br>
+</code>
 but myString can make it easier for begginers, like:
-```c
+<code>
 string str = createString(LITTLE, "hi mom!");
 changeValue(str, "hi mom again!");
 prints(str);
-```<br>
+</code>
 in pure c code, it will look like:
-```c
+<code>
 char str[] = "hi mom!";
 str[6] = ' ';
 strcat(str, "again!");
 printf("%s\n", str);
-```<br>
+</code>
 <h1>Can I use it now?</h1>
 No, you can't. This project still in development, and it doesn't has a preview version yet, so you need to wait it be released or you can help me to build this project!
 <h1>Who is this project aimed at?</h1>
