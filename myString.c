@@ -58,6 +58,10 @@ string inputString(char message[], stringType type) {
     for (int i = 0 ; i < strlen(value) - 1 ; i++) {
         value[i] = input[i];
     }
+    size_t in = strlen(value) - 1;
+    if (value[in] == '\n') {
+        value[in] = '\0';
+    }
     int len2 = sizeof(value) / sizeof(char);
     x.len = len2;
     strcpy(x.value, value);
